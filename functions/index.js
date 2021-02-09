@@ -1,5 +1,13 @@
-const functions = require('firebase-functions');
+const functions = require('firebase-functions')
 
-exports.helloWorld = functions.https.onRequest((request, response) => {
-    response.send("Hello it worked!");
-});
+module.exports = {
+
+  hello: functions.https.onRequest((req, res) => {
+
+    const subject = req.query.subject || 'World'
+
+    res.send(`Hello ${subject}!`)
+
+  }),
+}
+
